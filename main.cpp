@@ -66,16 +66,16 @@ int ConvertirListe(int *Liste){
 
 void ChoisirOperandesIntNoS(unsigned int *TabIntNoS){
     unsigned int intnos1, intnos2;
-/*
+
     printf("Tappez premier operande \n");
     scanf("%u", &intnos1);
 
     printf("Tappez deuxieme operande \n");
     scanf("%u", &intnos2);
-*/
-    //TabIntNoS = (unsigned int*)calloc(2,sizeof(unsigned int));
-    TabIntNoS[0]=3;
-    TabIntNoS[1]=2;
+
+    TabIntNoS[0]=intnos1;
+    TabIntNoS[1]=intnos2;
+
 }
 
 void ChoisirOperandesIntS(int *TabIntS){
@@ -199,7 +199,13 @@ int AddEntierSigne32Bits(int *TabIntS){
 
 //sub
 extern unsigned int SubEntierNonSigne32Bits(unsigned int *TabIntNoS);
-extern int SubEntierSigne32Bits(int *TabIntS);
+
+int SubEntierSigne32Bits(int *TabIntS){
+    int res = TabIntS[0]-TabIntS[1];
+    return res;
+
+}
+
 //mpy
 extern long long MpyEntierNonSigneOp32bitsRes64bits(unsigned int *TabIntNoS);
 extern long long MpyEntierSigneOp32bitsRes64bits(unsigned int *TabIntS);
@@ -223,13 +229,21 @@ void AnalyserListe(int *Liste, unsigned short *TabShortNoS, short *TabShortS, un
         switch (choix) {
         case 12://entier nos 32 bits
             ChoisirOperandesIntNoS(TabIntNos);
+            unsigned int res;
+            res = AddEntierNonSigne32Bits(TabIntNos);//fait suivre le tableau a la fonction assembleur
+            printf("resultat addNonSigne32bits:%d\n", res);
 
             break;
 
         case 22://entier signe 32 bits
+
             ChoisirOperandesIntS(TabIntS);
+            int res2;
+            res2 = AddEntierSigne32Bits(TabIntS);
+            printf("resultat addSigne32bits: %d\n", res2);
 
             break;
+
         case 32://fractionnaire 32 bits
 
             break;
@@ -243,14 +257,17 @@ void AnalyserListe(int *Liste, unsigned short *TabShortNoS, short *TabShortS, un
         switch (choix) {
         case 12://entier nos 32 bits
             ChoisirOperandesIntNoS(TabIntNos);
-            unsigned int res;
-            res = AddEntierNonSigne32Bits(TabIntNos);//fait suivre le tableau a la fonction assembleur
-            printf("%d\n", res);
+            unsigned int res3;
+            res3 = AddEntierNonSigne32Bits(TabIntNos);//fait suivre le tableau a la fonction assembleur
+            printf("Resultat subNonSigne32Bits: %d\n", res3);
 
             break;
 
         case 22://entier signe 32 bits
             ChoisirOperandesIntS(TabIntS);
+            int res4;
+            res4 = SubEntierSigne32Bits(TabIntS);
+            printf("Resultat subSigne32Bits: %d\n", res4);
 
             break;
         case 44:
@@ -316,7 +333,7 @@ void AnalyserListe(int *Liste, unsigned short *TabShortNoS, short *TabShortS, un
 int main(int argc, char* argv[]) {
     // initialize array data
 
-    /*
+
     size=argc;
 
     list=(int*)calloc(size,sizeof(int));
@@ -325,49 +342,57 @@ int main(int argc, char* argv[]) {
     for(int i=0;i<3;i++){
         list[i]=atoi(argv[i+1]);
     }
-    */
+
 
     //tableau contenant les operandes
-    int *TabIntS;
+
+    int TabIntS[2];
+    int *TabIntS_ptr = TabIntS;
+
     unsigned int TabIntNos[2];
     unsigned int *TabIntNos_ptr = TabIntNos;
 
+    unsigned short TabShortNoS[2];
+    unsigned short *TabShortNoS_ptr=TabShortNoS;
 
-    unsigned short *TabShortNoS;
-    short *TabShortS;
+    short TabShortS[2];
+    short *TabShortS_ptr=TabShortS;
 
-    unsigned char *TabCharNoS;
-    char *TabCharS;
+    unsigned char TabCharNoS[2];
+    unsigned char *TabCharNoS_ptr =TabCharNoS;
+    char TabCharS[2];
+    char *TabCharS_ptr=TabCharS;
 
-    unsigned long *TabLongNos;
-    long *TabLongS;
+    unsigned long TabLongNos[2];
+    unsigned long *TabLongNos_ptr=TabLongNos;
 
-    unsigned long long *TabLongLongNos;
-    long long *TabLongLongS;
+    long TabLongS[2];
+    long *TabLongS_ptr=TabLongS;
+
+    unsigned long long TabLongLongNos[2];
+    unsigned long long *TabLongLongNos_ptr=TabLongLongNos;
+
+    long long TabLongLongS[2];
+    long long *TabLongLongS_ptr=TabLongLongS;
 
 
     //donne bonne taille de tableau a chacun
     initTab(TabShortNoS, TabShortS, TabCharNoS, TabCharS, TabIntNos, TabIntS, TabLongNos, TabLongS, TabLongLongNos, TabLongLongS);
 
-
+/*
     list=(int*)calloc(3,sizeof(int));
 
     //on fixe valeurs sub 32bits noS
     list[0]=1;
     list[1]=2;
     list[2]=2;
+    */
 
     for(int i=0;i<3;i++){
         printf("%d\n", list[i]);
     }
 
-    AnalyserListe(list, TabShortNoS, TabShortS, TabCharNoS, TabCharS, TabIntNos_ptr, TabIntS, TabLongNos, TabLongS, TabLongLongNos, TabLongLongS);
-
-
-
-
-
-
+    AnalyserListe(list, TabShortNoS_ptr, TabShortS_ptr, TabCharNoS_ptr, TabCharS_ptr, TabIntNos_ptr, TabIntS_ptr, TabLongNos_ptr, TabLongS_ptr, TabLongLongNos_ptr, TabLongLongS_ptr);
 
 
     return 0;
