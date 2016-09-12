@@ -16,7 +16,7 @@ _SubEntierNonSigne32Bits
 	LDW *A4, A8
 	NOP 4
 	SUBU A7, A8, A5:A4; soustraction
-	SAT A5:A4, A7
+        SAT A5:A4, A7; on rend un resultat sur 32bits
 	NOP 1
 	STW A7, *A6++; A7 contient le resultat de la soustraction
 
@@ -28,19 +28,12 @@ _SubEntierNonSigne32Bits
 _SubEntierSigne32Bits
 	.asmfunc
 
-	LDW *A4++, A7 ;on met la valeur du tableau dans A7, apres on incremente A4
+	LDDW *A4++, A1:A0; on load le premier flottant dp
 	NOP 4
-	LDW *A4, A8
+	LDDW *A4, B1:B0
 	NOP 4
-
-	;Clear le bit SAT de CSR avant la proc
-	MVK 0, B5
-	MVC B5, CSR
-	SSUB A7, A8, A7; SSUB permet de lever bit SAT
-	NOP 1
-	MVC CSR, B5; recupere valeur du CSR
-
-	MV A7, A4
+	SUBDP A1:A0, B1:B0, A5:A4; on soustrait resultat direct dans registres de retour
+	NOP 6 
 
 	B B3
 	NOP 5
