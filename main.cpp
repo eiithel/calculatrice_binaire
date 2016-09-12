@@ -31,6 +31,8 @@ int SubEntierSigne32Bits(int *TabIntS){
     return res;
 
 }
+//extern long float SubFlottant64bits(long float *TabFloat64);
+// utiliser printf("%lf",resultat) pour afficher
 
 //mpy
 extern long long MpyEntierNonSigneOp32bitsRes64bits(unsigned int *TabIntNoS);
@@ -85,6 +87,12 @@ int main(int argc, char* argv[]) {
 
     long long TabLongLongS[2];
     long long *TabLongLongS_ptr=TabLongLongS;
+
+    /* long float TabFloat64[2];
+       long float *TabFloat64_ptr = TabFloat64;
+    */
+    //erreur pour ce format a la compilation sous Qt mais fonctionne sur ccs...
+
 
 
     //donne bonne taille de tableau a chacun
