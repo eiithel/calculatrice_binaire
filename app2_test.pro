@@ -13,7 +13,11 @@ SOURCES += main.cpp \
     fonctions.cpp
 
 DISTFILES += \
-    fonctions_asm.asm
+    fonctions_asm.asm \
+    sub.asm \
+    Division.asm \
+    mpy.asm \
+    Addition.asm
 
 HEADERS += \
     fonctions.h
