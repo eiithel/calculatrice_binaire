@@ -19,7 +19,7 @@
         .text
 	
 _DivIncrementation; entier non signe
-;Faire la division entre deux entiers non signes d?une façon incrementale, cest-a-dire en
+;Faire la division entre deux entiers non signes dune façon incrementale, cest-a-dire en
 ;effectuant une succession de soustraction (comme à la main). format de donnees 32 bits.
 
 	.asmfunc

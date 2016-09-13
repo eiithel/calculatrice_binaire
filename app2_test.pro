@@ -10,14 +10,17 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    fonctions.cpp
+    fonctions.cpp \
+    MpyFrac.c
 
 DISTFILES += \
     fonctions_asm.asm \
     sub.asm \
     Division.asm \
     mpy.asm \
-    Addition.asm
+    Addition.asm \
+    MpyFloatPoint.asm \
+    MpyFrac.asm
 
 HEADERS += \
     fonctions.h

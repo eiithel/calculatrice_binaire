@@ -9,6 +9,7 @@ int *list;    // pointer to array of integer numbers
 int size;     // size of data array
 //gabriel divflot32 simple precision
 int En_division =0;
+int En_QFormat=0;
 
 
 //Operations fonctions asm en C
@@ -26,7 +27,6 @@ int AddEntierSigne32BitsC(int *TabIntS){
 }
 
 //soustraction
-extern unsigned int SubEntierNonSigne32Bits(unsigned int *TabIntNoS);
 
 int SubEntierSigne32Bits(int *TabIntS){
     int res = TabIntS[0]-TabIntS[1];
@@ -36,16 +36,6 @@ int SubEntierSigne32Bits(int *TabIntS){
 extern double SubFlottant64bits(double *TabFloat64);
 //printf("%lf",resultat);
 
-//mpy
-extern long long MpyEntierNonSigneOp32bitsRes64bits(unsigned int *TabIntNoS);
-extern long long MpyEntierSigneOp32bitsRes64bits(unsigned int *TabIntS);
-//div
-extern unsigned int DivSubc(unsigned int *TabIntNoS);
-extern float DivFlottant32bits(float *TabFloat);
-
-
-
-//tous les types
 
 int main(int argc, char* argv[]) {
 
@@ -96,12 +86,6 @@ int main(int argc, char* argv[]) {
     double TabFloat64[2];
     double *TabFloat64_ptr=TabFloat64;
 
-    /* long float TabFloat64[2];
-       long float *TabFloat64_ptr = TabFloat64;
-    */
-    //erreur pour ce format a la compilation sous Qt mais fonctionne sur ccs...
-
-
 
     //donne bonne taille de tableau a chacun
     initTab(TabShortNoS, TabShortS, TabCharNoS, TabCharS, TabIntNos, TabIntS, TabLongNos, TabLongS, TabLongLongNos, TabLongLongS);
@@ -110,7 +94,7 @@ int main(int argc, char* argv[]) {
         printf("%d\n", list[i]);
     }
 
-    AnalyserListe(list, TabShortNoS_ptr, TabShortS_ptr, TabCharNoS_ptr, TabCharS_ptr, TabIntNos_ptr, TabIntS_ptr, TabLongNos_ptr, TabLongS_ptr, TabLongLongNos_ptr, TabLongLongS_ptr);
+    AnalyserListe(list, TabShortNoS_ptr, TabShortS_ptr, TabCharNoS_ptr, TabCharS_ptr, TabIntNos_ptr, TabIntS_ptr, TabLongNos_ptr, TabLongS_ptr, TabLongLongNos_ptr, TabLongLongS_ptr, TabFloat32_ptr);
 
     return 0;
 
