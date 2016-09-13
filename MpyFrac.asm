@@ -1,6 +1,21 @@
-	.def _MpyfractionnaireOp32bitsRes64bits_Q7_24_Q15_16
+;--------------------------------------
+;File:   MpyFrac.asm
+;Authors: tesl2401     marg2121    mare3016
+;Created on 8 sept. 2016, 17:28
+;--------------------------------------
 
-	
+;--------------------------------------
+;Definitions globales
+;--------------------------------------
+
+
+        .def _MpyfractionnaireOp32bitsRes64bits_Q7_24_Q15_16
+
+;--------------------------------------
+;Fonctions
+;--------------------------------------
+
+
 _MpyfractionnaireOp32bitsRes64bits_Q7_24_Q15_16
 	.asmfunc
 	

@@ -20,7 +20,11 @@ DISTFILES += \
     mpy.asm \
     Addition.asm \
     MpyFloatPoint.asm \
-    MpyFrac.asm
+    MpyFrac.asm \
+    MpyFloatPoint .asm \
+    MpyFloatPoint .asm \
+    MpyFloatPoint .asm \
+    MpyFloatPoint.asm
 
 HEADERS += \
     fonctions.h
