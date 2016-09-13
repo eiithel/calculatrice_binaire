@@ -1,6 +1,6 @@
 ;--------------------------------------
 ;File:   mpy.asm
-;Authors: tesl2401     marg2121    xxxxyyyyy
+;Authors: tesl2401     marg2121    mare3016
 ;Created on 8 sept. 2016, 17:28
 ;--------------------------------------
 
@@ -82,9 +82,9 @@ _MpyEntierSigneOp32bitsRes64bits  ;GE Fonction 7.3.10
 
 ; Code de la fonction
 ;But : Faire la multiplication entre deux fractionnaires Q7.24 et Q15.16. Par convention le 1er
-;opŽrande rentrŽ est le Q7.24. Le rŽsultat doit �tre capable dÕoffrir la plus grande prŽcision
-;possible pour de futurs calculs. Les opŽrandes rentrŽs doivent �tre sous la forme dÕentier et
-;cohŽrent avec la reprŽsentation demandŽe.
+;operande rentre est le Q7.24. Le resultat doit etre capable d'offrir la plus grande precision
+;possible pour de futurs calculs. Les operandes rentres doivent etre sous la forme dentier et
+;coherent avec la representation demandee.
 
 ;.endasmfunc
 
@@ -93,7 +93,7 @@ _MpyEntierSigneOp32bitsRes64bits  ;GE Fonction 7.3.10
 ;.asmfunc
 
 ; Code de la fonction
-;But : Faire la multiplication entre 2 flottants ˆ double prŽcision.
+;But :Faire la multiplication entre 2 flottants double precision.
 
 ;.endasmfunc
 

@@ -53,6 +53,10 @@ SOURCES       = main.cpp \
 OBJECTS       = main.o \
 		fonctions.o
 DIST          = fonctions_asm.asm \
+		sub.asm \
+		Division.asm \
+		mpy.asm \
+		Addition.asm \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \

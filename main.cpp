@@ -7,23 +7,25 @@
 
 int *list;    // pointer to array of integer numbers
 int size;     // size of data array
+//gabriel divflot32 simple precision
+int En_division =0;
 
 
-//operations fonctions asm
+//Operations fonctions asm en C
 
-//add
-unsigned int AddEntierNonSigne32Bits(unsigned int *TabIntNoS){
-    //unsigned int res = 1+2;
+//addition
+unsigned int AddEntierNonSigne32BitsC(unsigned int *TabIntNoS){
     unsigned int res;
     res = TabIntNoS[0]+TabIntNoS[1];
     return res;
 }
-int AddEntierSigne32Bits(int *TabIntS){
+
+int AddEntierSigne32BitsC(int *TabIntS){
     int res = TabIntS[0]+TabIntS[1];
     return res;
 }
 
-//sub
+//soustraction
 extern unsigned int SubEntierNonSigne32Bits(unsigned int *TabIntNoS);
 
 int SubEntierSigne32Bits(int *TabIntS){
@@ -31,8 +33,8 @@ int SubEntierSigne32Bits(int *TabIntS){
     return res;
 
 }
-//extern long float SubFlottant64bits(long float *TabFloat64);
-// utiliser printf("%lf",resultat) pour afficher
+extern double SubFlottant64bits(double *TabFloat64);
+//printf("%lf",resultat);
 
 //mpy
 extern long long MpyEntierNonSigneOp32bitsRes64bits(unsigned int *TabIntNoS);
@@ -88,6 +90,12 @@ int main(int argc, char* argv[]) {
     long long TabLongLongS[2];
     long long *TabLongLongS_ptr=TabLongLongS;
 
+    float TabFloat32[2];
+    float *TabFloat32_ptr=TabFloat32;
+
+    double TabFloat64[2];
+    double *TabFloat64_ptr=TabFloat64;
+
     /* long float TabFloat64[2];
        long float *TabFloat64_ptr = TabFloat64;
     */
@@ -103,7 +111,6 @@ int main(int argc, char* argv[]) {
     }
 
     AnalyserListe(list, TabShortNoS_ptr, TabShortS_ptr, TabCharNoS_ptr, TabCharS_ptr, TabIntNos_ptr, TabIntS_ptr, TabLongNos_ptr, TabLongS_ptr, TabLongLongNos_ptr, TabLongLongS_ptr);
-
 
     return 0;
 

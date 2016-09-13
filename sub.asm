@@ -1,16 +1,34 @@
-	.def _SubEntierNonSigne32Bits
+;--------------------------------------
+;File:   sub.asm
+;Authors: tesl2401     marg2121    mare3016
+;Created on 8 sept. 2016, 17:28
+;--------------------------------------
+
+;--------------------------------------
+;Definitions globales
+;--------------------------------------
+
+        .def _SubEntierNonSigne32Bits
 	.def _SubEntierSigne32Bits
 	.def _SubFlottant64bits
 	.def _Circ_asm
 	.data
 
+;--------------------------------------
+;Variables
+;--------------------------------------
+
 valcsr .int 0x00000200
 val .float 0.5 ;Il faut coller les symboles a la gauche
 
+;--------------------------------------
+;Fonctions
+;--------------------------------------
 
 	.text
 
 _SubEntierNonSigne32Bits
+;la soustraction non signée avec des opérandes de 32 bits. Le résultat doit rester sur 40 bits
 	.asmfunc
 
 	LDW *A4++, A7 ;on met la valeur du tableau dans A7, apres on incremente A4
@@ -28,6 +46,7 @@ _SubEntierNonSigne32Bits
 	.endasmfunc
 
 _SubEntierSigne32Bits
+;la soustraction signée avec des opérandes de 32 bits. Le résultat doit rester sur 40 bits
 	.asmfunc
 
 	LDW *A4++, A7 ;on met la valeur du tableau dans A7, apres on incremente A4
@@ -50,6 +69,7 @@ _SubEntierSigne32Bits
 	.endasmfunc
 
 _SubFlottant64bits
+;la soustraction entre deux flottants à double précision (64 bits).
 	.asmfunc
 
 	LDDW *A4++, A1:A0; on load le premier flottant
@@ -65,6 +85,8 @@ _SubFlottant64bits
 	.endasmfunc
 
 _Circ_asm
+;fonction realisant l'encryptage des donnees le buffer circulaire fonctionne
+;mais il reste a sauver le resultat dans le bon tableau
 	.asmfunc
 
 	MVC AMR, B0; on met registre de controle dans B0

@@ -1,5 +1,8 @@
 #include "fonctions.h"
 
+extern int En_division;//variable globale indiquant si l'operation en cours est une division
+
+
 void initTab(unsigned short *TabShortNoS, short *TabShortS, unsigned char *TabCharNoS, char *TabCharS, unsigned int *TabIntNos, int *TabIntS, unsigned long *TabLongNos, long *TabLongS, unsigned long long *TabLongLongNos, long long *TabLongLongS){
 
     //TabIntNos = (unsigned int*)calloc(2,sizeof(unsigned int));
@@ -54,6 +57,12 @@ void ChoisirOperandesIntS(int *TabIntS){
 
     printf("Tappez deuxieme operande \n");
     scanf("%d", &ints2);
+
+    //protection de la division par zero
+    if(En_division && ints2==0){
+        printf("erreur! Division par zero");
+        return;
+    }
 
     //TabIntS = (int*)calloc(2,sizeof(int));
     TabIntS[0]=ints1;
@@ -161,7 +170,7 @@ void AnalyserListe(int *Liste, unsigned short *TabShortNoS, short *TabShortS, un
         case 12://entier nos 32 bits
             ChoisirOperandesIntNoS(TabIntNos);
             unsigned int res;
-            res = AddEntierNonSigne32Bits(TabIntNos);//fait suivre le tableau a la fonction assembleur
+            res = AddEntierNonSigne32BitsC(TabIntNos);//fait suivre le tableau a la fonction assembleur
             printf("resultat addNonSigne32bits:%d\n", res);
 
             break;
@@ -170,7 +179,7 @@ void AnalyserListe(int *Liste, unsigned short *TabShortNoS, short *TabShortS, un
 
             ChoisirOperandesIntS(TabIntS);
             int res2;
-            res2 = AddEntierSigne32Bits(TabIntS);
+            res2 = AddEntierSigne32BitsC(TabIntS);
             printf("resultat addSigne32bits: %d\n", res2);
 
             break;
@@ -189,7 +198,7 @@ void AnalyserListe(int *Liste, unsigned short *TabShortNoS, short *TabShortS, un
         case 12://entier nos 32 bits
             ChoisirOperandesIntNoS(TabIntNos);
             unsigned int res3;
-            res3 = AddEntierNonSigne32Bits(TabIntNos);//fait suivre le tableau a la fonction assembleur
+            res3 = AddEntierNonSigne32BitsC(TabIntNos);//fait suivre le tableau a la fonction assembleur
             printf("Resultat subNonSigne32Bits: %d\n", res3);
 
             break;
@@ -237,18 +246,23 @@ void AnalyserListe(int *Liste, unsigned short *TabShortNoS, short *TabShortS, un
 
     case 4://div
 
+        En_division=1;//set du flag en division a 1
+
         switch (choix) {
-        /*case 1Y:
-
+        case 12://entier signe 32 bits
+            ChoisirOperandesIntS(TabIntS);
+            En_division=0;
             break;
 
-        case 1Y:
+        case 14://entier signe 64 bits
 
+            En_division=0;
             break;
-        case 44:
+        case 44://flottant 64
 
+            En_division=0;
             break;
-        */
+
         }
         break;
 

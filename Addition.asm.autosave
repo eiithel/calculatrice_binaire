@@ -19,9 +19,7 @@
         .text
 
 _AddEntierNonSigne32bits
-;addition non signee avec des operandes de 32 bits. Il est possible que le résultat
-;depasse une représentation de 32 bits. Le resultat doit rester sur 32 bits.
-
+;
 	.asmfunc
 	
 	LDW *A4++,A0 ; Lecture et enregistrement du premier argument d'entré dans regsitre A0
@@ -38,9 +36,6 @@ _AddEntierNonSigne32bits
 	.endasmfunc
 	
 _AddEntierSigne32bits
-;addition signee avec des operandes de 32 bits. Il est possible que le resultat depasse
-;une representation de 32 bits. Le resultat doit rester sur 32 bits.
-
 	.asmfunc
 		
 	LDW *A4++,A0 ; Lecture et enregistrement du premier argument d'entré dans regsitre A0
@@ -57,10 +52,6 @@ _AddEntierSigne32bits
 	.endasmfunc
 	
 _AddFractionnaire32bits_Q7_24_Q15_16; entier signe
-;addition entre un fractionnaire Q7.24 et un Q15.16. Suivez la convention selon
-;laquelle le 1er operande entre est le Q7.24. Vous devez fournir le résultat le plus coheérent possible
-;sur 32 bits.
-
 	.asmfunc
 
 	LDW *A4++,A0 ; Lecture et enregistrement du premier argument d'entré dans regsitre A0

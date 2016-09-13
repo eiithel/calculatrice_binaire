@@ -24,8 +24,8 @@ void ChoisirOperandesLongNos(unsigned long *TabLongNos);
 void ChoisirOperandesLongS(long *TabLongS);
 
 //add
-unsigned int AddEntierNonSigne32Bits(unsigned int *TabIntNoS);
-int AddEntierSigne32Bits(int *TabIntS);
+unsigned int AddEntierNonSigne32BitsC(unsigned int *TabIntNoS);
+int AddEntierSigne32BitsC(int *TabIntS);
 //sub
 extern unsigned int SubEntierNonSigne32Bits(unsigned int *TabIntNoS);
 int SubEntierSigne32Bits(int *TabIntS);
